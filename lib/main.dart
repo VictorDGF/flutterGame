@@ -21,14 +21,48 @@ class AvoidObstaclesApp extends StatelessWidget {
   const AvoidObstaclesApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Evita Obstáculos',
       theme: ThemeData.dark(),
-      home: const GamePage(),
+      home: const AuthGate(),
+      // Mantengo rutas por si las necesitas en otros lugares
+      routes: {
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        const GamePage().toString(): (context) => const GamePage(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
 }
+
+class AuthGate extends StatelessWidget {
+  const AuthGate({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Usamos el stream de authService para reconstruir cuando cambia el estado
+    return StreamBuilder<User?>(
+      stream: authService.value.authStateChanges(),
+      builder: (context, snapshot) {
+        // Mientras se determina el estado, mostramos una pantalla de carga
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Scaffold(
+            body: Center(child: CircularProgressIndicator()),
+          );
+        }
+
+        // Si hay un usuario (logueado) mostramos HomeScreen
+        if (snapshot.hasData && snapshot.data != null) {
+          return const GamePage();
+        }
+
+        // Si no hay usuario mostramos LoginScreen
+        return const LoginScreen();
+      },
+    );
+  }
+}
+
 
 class GamePage extends StatefulWidget {
   const GamePage({super.key});

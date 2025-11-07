@@ -4,6 +4,7 @@ import 'package:flutter_game/utils/alert_helper.dart';
 import '../services/auth_service.dart';
 import '../components/custom_input_field.dart';
 
+
 class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';
   const LoginScreen({super.key});
@@ -70,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
       if (!mounted) return;
       Navigator.pushNamedAndRemoveUntil(
         context,
-        HomePage.routeName,
+        GamePage.routeName,
         (Route<dynamic> route) => false,
       );
 
