@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "508271595505",
+    "project_id": "flutter-app-cab3a",
+    "storage_bucket": "flutter-app-cab3a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:508271595505:android:4fc0a427ab95f5c70a3e50",
+        "android_client_info": {
+          "package_name": "com.example.flutter_game"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbfs9e-Usk1XaQl_F254S_MvS-bgOFOdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
